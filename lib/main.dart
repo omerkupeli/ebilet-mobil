@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
                                       Text(
                                         "Event",
                                         style: TextStyle(
+                                          fontFamily: 'Poppins',
                                           fontSize: 25,
                                           color: Color.fromARGB(255, 43, 0, 0),
                                           fontWeight: FontWeight.bold,
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
                                       Text(
                                         "Event Hall",
                                         style: TextStyle(
+                                          fontFamily: 'Poppins',
                                           fontSize: 18,
                                           color: Color.fromARGB(
                                               255, 255, 255, 255),
