@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:mobil_bilet1/core/widgets/buildEventNav.dart';
+import 'package:mobil_bilet1/core/widgets/buildFeatured.dart';
 
 import 'package:mobil_bilet1/core/widgets/button.dart';
 import 'package:mobil_bilet1/core/widgets/buildBaslik.dart';
@@ -67,6 +68,11 @@ class MyApp extends StatelessWidget {
                                 ],
                               ),
                             )),
+                        Container(
+                          child: Column(
+                            children: [buildFeatured()],
+                          ),
+                        ),
 
                         //BUTONLAR
                         Padding(
@@ -248,18 +254,22 @@ class MyApp extends StatelessWidget {
                 //Alt Kontrol Bar
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    color: const Color.fromARGB(206, 117, 117, 117),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        buildNavIcon(Icons.home, true),
-                        buildNavIcon(Icons.location_on_outlined, false),
-                        buildNavIcon(Icons.feedback, false),
-                        buildNavIcon(Icons.person, false),
-                      ],
+                  child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(30.0)),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      color: Color.fromARGB(143, 117, 117, 117),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          buildNavIcon(Icons.home, true),
+                          buildNavIcon(Icons.location_on_outlined, false),
+                          buildNavIcon(Icons.feedback, false),
+                          buildNavIcon(Icons.person, false),
+                        ],
+                      ),
                     ),
                   ),
                 )
@@ -271,9 +281,16 @@ class MyApp extends StatelessWidget {
 }
 
 Widget buildNavIcon(@required IconData iconData, @required bool active) {
-  return Icon(
-    iconData,
-    size: 25,
-    color: active ? Color.fromARGB(255, 0, 204, 255) : Colors.white,
+  return ClipRRect(
+    borderRadius: BorderRadius.all(Radius.circular(12)),
+    child: Container(
+      color: active ? Colors.blue : Color.fromARGB(166, 201, 201, 201),
+      padding: EdgeInsets.all(8),
+      child: Icon(
+        iconData,
+        size: 25,
+        color: Colors.white,
+      ),
+    ),
   );
 }
