@@ -1,6 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:mobil_bilet1/core/widgets/buildEventNav.dart';
+
+import 'package:mobil_bilet1/core/widgets/button.dart';
+import 'package:mobil_bilet1/core/widgets/buildBaslik.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +21,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+          backgroundColor: Color.fromARGB(255, 0, 204, 255),
           body: SafeArea(
             child: Stack(
               children: [
@@ -119,51 +123,27 @@ class MyApp extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Image.asset(
-                                      "assets/images/movie.jpeg",
-                                      height: 150,
-                                      width: 100,
-                                    ),
+                                    buildEventNav(),
                                     const SizedBox(
                                       width: 12,
                                     ),
-                                    Image.asset(
-                                      "assets/images/movie1.jpg",
-                                      height: 150,
-                                      width: 100,
-                                    ),
+                                    buildEventNav(),
                                     const SizedBox(
                                       width: 12,
                                     ),
-                                    Image.asset(
-                                      "assets/images/movie3.jpeg",
-                                      height: 150,
-                                      width: 100,
-                                    ),
+                                    buildEventNav(),
                                     const SizedBox(
                                       width: 12,
                                     ),
-                                    Image.asset(
-                                      "assets/images/movie.jpeg",
-                                      height: 150,
-                                      width: 100,
-                                    ),
+                                    buildEventNav(),
                                     const SizedBox(
                                       width: 12,
                                     ),
-                                    Image.asset(
-                                      "assets/images/movie.jpeg",
-                                      height: 150,
-                                      width: 100,
-                                    ),
+                                    buildEventNav(),
                                     const SizedBox(
                                       width: 12,
                                     ),
-                                    Image.asset(
-                                      "assets/images/movie.jpeg",
-                                      height: 150,
-                                      width: 100,
-                                    ),
+                                    buildEventNav(),
                                   ],
                                 ),
                               )
@@ -178,30 +158,39 @@ class MyApp extends StatelessWidget {
                         Container(
                           child: Column(
                             children: [
-                              buidBaslik("Yakında"),
+                              buidBaslik("Öne Çıkanlar"),
                               const SizedBox(
                                 height: 8,
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(
-                                    "assets/images/movie2.jpg",
-                                    height: 150,
-                                    width: 100,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/movie.jpeg",
-                                    height: 150,
-                                    width: 100,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/movie1.jpg",
-                                    height: 150,
-                                    width: 100,
-                                  ),
-                                ],
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    buildEventNav(),
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -212,33 +201,39 @@ class MyApp extends StatelessWidget {
                         Container(
                           child: Column(
                             children: [
-                              buidBaslik("Yakında"),
+                              buidBaslik("Öne Çıkanlar"),
                               const SizedBox(
                                 height: 8,
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    child: Image.asset(
-                                      "assets/images/movie2.jpg",
-                                      height: 150,
-                                      width: 100,
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
                                     ),
-                                  ),
-                                  Image.asset(
-                                    "assets/images/movie.jpeg",
-                                    height: 150,
-                                    width: 100,
-                                  ),
-                                  Image.asset(
-                                    "assets/images/movie1.jpg",
-                                    height: 150,
-                                    width: 100,
-                                  ),
-                                ],
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    buildEventNav(),
+                                    const SizedBox(
+                                      width: 12,
+                                    ),
+                                    buildEventNav(),
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -279,53 +274,6 @@ Widget buildNavIcon(@required IconData iconData, @required bool active) {
   return Icon(
     iconData,
     size: 25,
-    color: active ? Colors.red : Colors.white,
-  );
-}
-
-Widget buidNavigation(
-    String text,
-    Color color,
-    //Widget widget,
-    BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return const MyApp();
-      }));
-    },
-    child: Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: color,
-          ),
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: Colors.white,
-                fontStyle: FontStyle.italic,
-                fontSize: 20,
-                fontWeight: FontWeight.w600),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-buidBaslik(String baslik) {
-  return Padding(
-    padding: const EdgeInsets.only(top: 10),
-    child: Text(
-      baslik,
-      style: const TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 24,
-          color: Colors.white,
-          fontStyle: FontStyle.italic),
-    ),
+    color: active ? Color.fromARGB(255, 0, 204, 255) : Colors.white,
   );
 }
