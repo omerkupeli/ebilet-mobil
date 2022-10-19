@@ -4,7 +4,7 @@ import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 import '../core/widgets/buildBaslik.dart';
 import '../core/widgets/buildEventNav.dart';
 import '../core/widgets/buildFeatured.dart';
-import '../core/widgets/button.dart';
+import '../core/widgets/buildNavigationButton.dart';
 import '../core/widgets/searchBar.dart';
 
 class HomePage extends StatefulWidget {
@@ -80,28 +80,28 @@ class _HomePageState extends State<HomePage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            buildNavigation(
+                            buildNavigationButton(
                                 "Öne Çıkanlar",
                                 const Color.fromARGB(115, 117, 117, 117),
                                 context),
                             const SizedBox(
                               width: 8,
                             ),
-                            buildNavigation(
+                            buildNavigationButton(
                                 "Müzik",
                                 const Color.fromARGB(115, 117, 117, 117),
                                 context),
                             const SizedBox(
                               width: 8,
                             ),
-                            buildNavigation(
+                            buildNavigationButton(
                                 "Sahne",
                                 const Color.fromARGB(115, 117, 117, 117),
                                 context),
                             const SizedBox(
                               width: 8,
                             ),
-                            buildNavigation(
+                            buildNavigationButton(
                                 "Sahne",
                                 const Color.fromARGB(115, 117, 117, 117),
                                 context),
