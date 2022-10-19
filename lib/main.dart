@@ -8,6 +8,8 @@ import 'package:mobil_bilet1/core/widgets/button.dart';
 import 'package:mobil_bilet1/core/widgets/buildBaslik.dart';
 import 'package:mobil_bilet1/core/widgets/buildNavIcon.dart';
 
+import 'core/widgets/searchBar.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: Scaffold(
-          backgroundColor: Color.fromARGB(255, 0, 204, 255),
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
           body: SafeArea(
             child: Stack(
               children: [
@@ -69,6 +71,9 @@ class MyApp extends StatelessWidget {
                                 ],
                               ),
                             )),
+                        //SEARCH BAR
+                        buildSearchBar(context),
+
                         Container(
                           child: Column(
                             children: [buildFeatured()],
@@ -83,28 +88,28 @@ class MyApp extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                buidNavigation(
+                                buildNavigation(
                                     "Öne Çıkanlar",
                                     const Color.fromARGB(115, 117, 117, 117),
                                     context),
                                 const SizedBox(
                                   width: 8,
                                 ),
-                                buidNavigation(
+                                buildNavigation(
                                     "Müzik",
                                     const Color.fromARGB(115, 117, 117, 117),
                                     context),
                                 const SizedBox(
                                   width: 8,
                                 ),
-                                buidNavigation(
+                                buildNavigation(
                                     "Sahne",
                                     const Color.fromARGB(115, 117, 117, 117),
                                     context),
                                 const SizedBox(
                                   width: 8,
                                 ),
-                                buidNavigation(
+                                buildNavigation(
                                     "Sahne",
                                     const Color.fromARGB(115, 117, 117, 117),
                                     context),
