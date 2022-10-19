@@ -3,9 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mobil_bilet1/main.dart';
 
-Widget smallButton(
-    Icon icon,
-    BuildContext context) {
+Widget smallButton(Icon icon, BuildContext context) {
   return Container(
     decoration: const BoxDecoration(
       borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -19,7 +17,7 @@ Widget smallButton(
         }));
       },
       child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 5.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 3.0),
           child: icon),
     ),
   );
