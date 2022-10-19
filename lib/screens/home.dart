@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 
 import '../core/widgets/buildBaslik.dart';
 import '../core/widgets/buildEventNav.dart';
 import '../core/widgets/buildFeatured.dart';
-import '../core/widgets/buildNavIcon.dart';
 import '../core/widgets/button.dart';
 import '../core/widgets/searchBar.dart';
 
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               const Icon(
                                 Icons.location_on_sharp,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                               Column(
                                 children: const [
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
                                       fontSize: 18,
-                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -247,26 +247,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             //Alt Kontrol Bar
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  color: Color.fromARGB(143, 117, 117, 117),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      buildNavIcon(Icons.home, true),
-                      buildNavIcon(Icons.location_on_outlined, false),
-                      buildNavIcon(Icons.feedback, false),
-                      buildNavIcon(Icons.person, false),
-                    ],
-                  ),
-                ),
-              ),
-            )
+            BuildBottomNavBar(),
           ],
         ),
       ),

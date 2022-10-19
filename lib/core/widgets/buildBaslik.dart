@@ -10,7 +10,7 @@ buidBaslik(String baslik) {
       style: const TextStyle(
           fontWeight: FontWeight.w500,
           fontSize: 24,
-          color: Colors.white,
+          color: Colors.black,
           fontStyle: FontStyle.italic),
     ),
   );
