@@ -15,7 +15,7 @@ buildEventNav() {
       ),
       Text(
         "Haluk Levent Konseri",
-        style: TextStyle(fontSize: 25, color: Colors.white),
+        style: TextStyle(fontSize: 25, color: Colors.black),
       ),
       Padding(
         padding: const EdgeInsets.all(15.0),
@@ -24,7 +24,7 @@ buildEventNav() {
             Icon(
               Icons.music_note_sharp,
               size: 30,
-              color: Colors.white,
+              color: Color.fromARGB(255, 0, 52, 95),
             ),
             SizedBox(
               width: 32,
@@ -32,14 +32,14 @@ buildEventNav() {
             Icon(
               Icons.people_alt,
               size: 30,
-              color: Colors.white,
+              color: Color.fromARGB(255, 0, 52, 95),
             ),
             SizedBox(
               width: 6,
             ),
             Text(
               "20K+ Going",
-              style: TextStyle(color: Colors.white, fontSize: 15),
+              style: TextStyle(color: Colors.black, fontSize: 15),
             )
           ],
         ),
@@ -56,14 +56,14 @@ buildEventNav() {
           ),
           Text(
             "İstanbul Arena, İstanbul",
-            style: TextStyle(color: Colors.white, fontSize: 15),
+            style: TextStyle(color: Colors.black, fontSize: 15),
           ),
           SizedBox(
             width: 14,
           ),
           Icon(
             Icons.bookmark,
-            color: Colors.white,
+            color: Color.fromARGB(255, 0, 52, 95),
             size: 25,
           )
         ],
