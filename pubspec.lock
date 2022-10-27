@@ -67,6 +67,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  image_stack:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: e50bef5be15c136a315adaab53acb6ec5e588de5
+      url: "https://github.com/expixer/image_stack"
+    source: git
+    version: "2.1.1"
   lints:
     dependency: transitive
     description:
