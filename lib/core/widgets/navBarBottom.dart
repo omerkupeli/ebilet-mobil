@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'buildNavIcon.dart';
 
-Widget BuildBottomNavBar() {
+Widget buildBottomNavBar() {
   return Align(
     alignment: Alignment.bottomCenter,
     child: ClipRRect(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(30.0)),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 20),
-        color: Color.fromARGB(143, 117, 117, 117),
+        color: const Color.fromARGB(143, 117, 117, 117),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

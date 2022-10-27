@@ -1,10 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:mobil_bilet1/screens/bookmark.dart';
-
 import 'package:mobil_bilet1/screens/home.dart';
-import 'package:mobil_bilet1/screens/notifications.dart';
 
 void main() {
   runApp(const MyApp());

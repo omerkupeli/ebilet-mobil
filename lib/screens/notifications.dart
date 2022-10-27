@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_bilet1/core/widgets/buildBaslik.dart';
 import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 import 'package:mobil_bilet1/core/widgets/smallButton.dart';
 
@@ -29,7 +28,7 @@ class _NotificationsState extends State<Notifications> {
                     children: [
                       Row(
                         children: [
-                          smallButton(Icon(Icons.arrow_back), context),
+                          smallButton(const Icon(Icons.arrow_back), context),
                           const SizedBox(
                             width: 6,
                           ),
@@ -43,14 +42,14 @@ class _NotificationsState extends State<Notifications> {
                           )
                         ],
                       ),
-                      smallButton(Icon(Icons.more_vert), context)
+                      smallButton(const Icon(Icons.more_vert), context)
                     ],
                   )
                 ],
               ),
             ),
           ),
-          BuildBottomNavBar(),
+          buildBottomNavBar(),
         ],
       )),
     );

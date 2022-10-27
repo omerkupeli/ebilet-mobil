@@ -31,7 +31,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
                     children: [
                       Row(
                         children: [
-                          smallButton(Icon(Icons.arrow_back), context),
+                          smallButton(const Icon(Icons.arrow_back), context),
                           const SizedBox(
                             width: 6,
                           ),
@@ -45,7 +45,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
                           )
                         ],
                       ),
-                      smallButton(Icon(Icons.more_vert), context)
+                      smallButton(const Icon(Icons.more_vert), context)
                     ],
                   ),
                   Padding(
@@ -87,40 +87,38 @@ class _BookmarkPageState extends State<BookmarkPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 70, vertical: 24),
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          buildEventNav(),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          buildEventNav(),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          buildEventNav(),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          buildEventNav(),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          buildEventNav(),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          buildEventNav(),
-                        ],
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        buildEventNav(),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        buildEventNav(),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        buildEventNav(),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        buildEventNav(),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        buildEventNav(),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        buildEventNav(),
+                      ],
                     ),
                   )
                 ],
               ),
             ),
           ),
-          BuildBottomNavBar(),
+          buildBottomNavBar(),
         ],
       )),
     );

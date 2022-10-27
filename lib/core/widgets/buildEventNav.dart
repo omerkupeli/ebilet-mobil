@@ -1,8 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:mobil_bilet1/constants.dart';
 import 'package:image_stack/image_stack.dart';
+import 'package:mobil_bilet1/constants.dart';
 
 buildEventNav() {
   List<String> images = [
@@ -31,11 +29,12 @@ buildEventNav() {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Container(
+                SizedBox(
                   height: 150,
                   child: FittedBox(
-                    child: Image.network('https://cdn.bubilet.com.tr/files/Blog/resim-adi-76524.png'),
                     fit: BoxFit.fill,
+                    child: Image.network(
+                        'https://cdn.bubilet.com.tr/files/Blog/resim-adi-76524.png'),
                   ),
                 ),
                 const Padding(
@@ -55,10 +54,12 @@ buildEventNav() {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.all(Radius.circular(24)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(24)),
                           border: Border.all(
                             color: const Color.fromRGBO(81, 100, 255, 1),
                             width: 1,
@@ -66,10 +67,10 @@ buildEventNav() {
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
+                          children: const <Widget>[
                             //Mask holder Template
-                            Container(width: 8, height: 20, child: null),
-                            const Text(
+                            SizedBox(width: 8, height: 20, child: null),
+                            Text(
                               'Müzik',
                               textAlign: TextAlign.left,
                               style: TextStyle(
@@ -81,14 +82,14 @@ buildEventNav() {
                               ),
                             ),
                             //Mask holder Template
-                            Container(width: 8, height: 20, child: null),
+                            SizedBox(width: 8, height: 20, child: null),
                           ],
                         ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 6.0),
-                      child: Container(
+                      child: SizedBox(
                         height: 22,
                         child: ImageStack(
                           imageBorderColor: Colors.transparent,
@@ -141,7 +142,7 @@ buildEventNav() {
               ],
             ),
           ),
-          Positioned(
+          const Positioned(
               right: 15,
               bottom: 15,
               child: Icon(
@@ -155,18 +156,18 @@ buildEventNav() {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Color.fromARGB(255, 246,249,255),
+                  color: const Color.fromARGB(255, 246, 249, 255),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6.0,horizontal: 8.0),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: 6.0, horizontal: 8.0),
                   child: Text(
                     "17 Ara",
                     style: TextStyle(
-                      fontFamily: 'Source Sans Pro',
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: Constants.primary
-                    ),
+                        fontFamily: 'Source Sans Pro',
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Constants.primary),
                   ),
                 ),
               )),
