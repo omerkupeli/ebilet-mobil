@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_bilet1/screens/MyCalendar.dart';
 import 'package:mobil_bilet1/screens/home.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const MyCalendar(),
     );
   }
 }
