@@ -121,27 +121,27 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                             ],
                           ),
                         )
@@ -163,27 +163,27 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                             ],
                           ),
                         )
@@ -203,27 +203,27 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(),
+                              buildEventNav(context, event),
                             ],
                           ),
                         )
@@ -237,7 +237,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             //Alt Kontrol Bar
-            buildBottomNavBar(),
+            buildBottomNavBar(context),
           ],
         ),
       ),

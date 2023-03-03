@@ -70,7 +70,7 @@ class _MyCalendarState extends State<MyCalendar> {
                     color: Colors.white,
                   )),
             ),
-            buildBottomNavBar(),
+            buildBottomNavBar(context),
           ],
         ),
       ),

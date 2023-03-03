@@ -49,7 +49,7 @@ class _NotificationsState extends State<Notifications> {
               ),
             ),
           ),
-          buildBottomNavBar(),
+          buildBottomNavBar(context),
         ],
       )),
     );

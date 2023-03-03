@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_bilet1/screens/MyCalendar.dart';
+import 'package:mobil_bilet1/screens/home.dart';
+import 'package:mobil_bilet1/screens/notifications.dart';
 
 import 'buildNavIcon.dart';
 
-Widget buildBottomNavBar() {
+Widget buildBottomNavBar(BuildContext context) {
   return Align(
     alignment: Alignment.bottomCenter,
     child: ClipRRect(
@@ -14,10 +17,11 @@ Widget buildBottomNavBar() {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            buildNavIcon(Icons.home, true),
-            buildNavIcon(Icons.location_on_outlined, false),
-            buildNavIcon(Icons.feedback, false),
-            buildNavIcon(Icons.person, false),
+            buildNavIcon(Icons.home, true, context, const HomePage()),
+            buildNavIcon(Icons.location_on_outlined, false, context,
+                const Notifications()),
+            buildNavIcon(Icons.feedback, false, context, const MyCalendar()),
+            buildNavIcon(Icons.person, false, context, const MyCalendar()),
           ],
         ),
       ),
