@@ -373,7 +373,7 @@ class EventDetails extends StatelessWidget {
                                   ),
                                 ),
                                 const Icon(
-                                  Icons.arrow_forward_outlined,
+                                  Icons.arrow_downward,
                                   color: Colors.white,
                                   size: 15,
                                 ),

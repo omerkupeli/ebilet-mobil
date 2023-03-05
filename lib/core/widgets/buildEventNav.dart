@@ -46,12 +46,12 @@ buildEventNav(BuildContext context, Event event) {
                       child: Image.network(event.imageUrl),
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 20, 0, 12),
                     child: Text(
-                      'Tarkan Konseri',
+                      event.name,
                       textAlign: TextAlign.start,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 16,
                           fontFamily: 'Source Sans Pro',
                           fontWeight: FontWeight.w600,
@@ -76,13 +76,13 @@ buildEventNav(BuildContext context, Event event) {
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
-                            children: const <Widget>[
+                            children: <Widget>[
                               //Mask holder Template
                               SizedBox(width: 8, height: 20, child: null),
                               Text(
-                                'Müzik',
+                                event.category,
                                 textAlign: TextAlign.left,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color.fromRGBO(81, 100, 255, 1),
                                   fontFamily: 'Source Sans Pro',
                                   fontSize: 10,
@@ -114,11 +114,11 @@ buildEventNav(BuildContext context, Event event) {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 4.0),
                         child: Text(
-                          "20K+ Gidiyor...",
-                          style: TextStyle(
+                          event.going,
+                          style: const TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
                               fontFamily: 'Source Sans Pro',
@@ -128,8 +128,8 @@ buildEventNav(BuildContext context, Event event) {
                     ],
                   ),
                   Row(
-                    children: const [
-                      Padding(
+                    children: [
+                      const Padding(
                         padding: EdgeInsets.only(left: 20.0, top: 9),
                         child: Icon(
                           Icons.location_on,
@@ -140,8 +140,8 @@ buildEventNav(BuildContext context, Event event) {
                       Padding(
                         padding: EdgeInsets.only(left: 5.0, top: 11),
                         child: Text(
-                          "Altıeylül, Balıkesir",
-                          style: TextStyle(
+                          event.location,
+                          style: const TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 10,
                           ),
@@ -169,10 +169,10 @@ buildEventNav(BuildContext context, Event event) {
                   borderRadius: BorderRadius.circular(8),
                   color: const Color.fromARGB(255, 246, 249, 255),
                 ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
                   child: Text(
-                    "17 Ara",
+                    event.date,
                     style: TextStyle(
                         fontFamily: 'Source Sans Pro',
                         fontSize: 12,
