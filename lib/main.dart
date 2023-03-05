@@ -37,7 +37,8 @@ Event event = Event(
       "https://picsum.photos/seed/980/600",
       "https://picsum.photos/seed/980/600"
     ],
-    description: "asldkasjdasdasdskbc");
+    description:
+        "Bu örnekte, SingleChildScrollView ile sarmalanmış bir Column widget'ı var. ScrollController örneği oluşturuldu ve SingleChildScrollView'a atandı. Hedef bölge, yeşil renkteki bir Container ile temsil edilir ve _targetOffset sabiti ile belirlenir. Düğme, _scrollToTarget yöntemi çağrılarak tıklanır ve ScrollController'ın animateTo yöntemi kullanılarak sayfa hedef bölgeye kaydırılır.");
 
 Event event2 = Event(
     name: "Tarkan Konseri2",
@@ -53,4 +54,5 @@ Event event2 = Event(
       "https://picsum.photos/seed/980/600",
       "https://picsum.photos/seed/980/600"
     ],
-    description: "asldkasjdasdasdskbc");
+    description:
+        "Bu örnekte, SingleChildScrollView ile sarmalanmış bir Column widget'ı var. ScrollController örneği oluşturuldu ve SingleChildScrollView'a atandı. Hedef bölge, yeşil renkteki bir Container ile temsil edilir ve _targetOffset sabiti ile belirlenir. Düğme, _scrollToTarget yöntemi çağrılarak tıklanır ve ScrollController'ın animateTo yöntemi kullanılarak sayfa hedef bölgeye kaydırılır.");

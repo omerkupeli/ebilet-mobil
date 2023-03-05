@@ -11,6 +11,17 @@ class EventDetails extends StatelessWidget {
 
   EventDetails(this.event);
 
+  final ScrollController _scrollController = ScrollController();
+  final double _targetOffset = 400.0;
+  void _scrollToTarget() {
+    // ScrollController'ın animateTo yöntemini kullanarak sayfanın hedef bölgesine kaydırın.
+    _scrollController.animateTo(
+      _targetOffset,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     List<String> images = [
@@ -21,6 +32,7 @@ class EventDetails extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          controller: _scrollController,
           child: Stack(
             children: [
               Container(
@@ -339,13 +351,12 @@ class EventDetails extends StatelessWidget {
                           ),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 5, vertical: 0),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return const MyApp();
-                              }));
-                            },
+                          child: ElevatedButton(
+                            onPressed: _scrollToTarget,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              elevation: 0,
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -448,6 +459,132 @@ class EventDetails extends StatelessWidget {
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: Container(
+                              child: Column(children: [
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 30,
+                                      backgroundImage: NetworkImage(
+                                          "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png"),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "Organizatör",
+                                              style: const TextStyle(
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
+                                                fontFamily: 'Source Sans Pro',
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                                //height: 1.5 /*PERCENT not supported*/),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 12,
+                                            ),
+                                            Text(
+                                              "Organizatör",
+                                              style: const TextStyle(
+                                                color:
+                                                    Color.fromRGBO(0, 0, 0, 1),
+                                                fontFamily: 'Source Sans Pro',
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.normal,
+                                                //height: 1.5 /*PERCENT not supported*/),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          120, 8, 8, 8),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          shape: BoxShape.rectangle,
+                                          border: Border.all(
+                                            color: Color.fromARGB(
+                                                255, 151, 185, 229),
+                                            width: 1,
+                                          ),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(5.0),
+                                              child: Text(
+                                                "Takip Et",
+                                                style: const TextStyle(
+                                                  color: Color.fromRGBO(
+                                                      81, 100, 255, 1),
+                                                  fontFamily: 'Source Sans Pro',
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.normal,
+                                                  //height: 1.5 /*PERCENT not supported*/),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.topLeft,
+                                      child: const Text(
+                                        "Etkinlik Açıklaması",
+                                        style: TextStyle(
+                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                          fontFamily: 'Source Sans Pro',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          //height: 1.5 /*PERCENT not supported*/),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        event.description,
+                                        softWrap: true,
+                                        style: TextStyle(
+                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                          fontFamily: 'Source Sans Pro',
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.normal,
+                                          //height: 1.5 /*PERCENT not supported*/),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ]),
+                            ),
                           ),
                         )
                       ],
