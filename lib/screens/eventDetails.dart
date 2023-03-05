@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:image_stack/image_stack.dart';
 import 'package:mobil_bilet1/Event.dart';
 import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
+import 'package:mobil_bilet1/main.dart';
+
+import '../constants.dart';
 
 class EventDetails extends StatelessWidget {
   final Event event;
@@ -9,21 +13,450 @@ class EventDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> images = [
+      'https://picsum.photos/seed/980/600',
+      'https://picsum.photos/seed/980/600',
+      'https://picsum.photos/seed/980/600'
+    ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text(event.name),
-      ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Image.network(event.imageUrl),
-            Text(event.name),
-            Text(event.date),
-            Text(event.location),
-            Text(event.category),
-            Text(event.going),
-            Text(event.images.toString()),
-          ],
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Container(
+                child: event.imageUrl != null
+                    ? Image.network(
+                        event.imageUrl,
+                        fit: BoxFit.cover,
+                        height: 300,
+                      )
+                    : Image.asset(
+                        'assets/images/placeholder.png',
+                        fit: BoxFit.cover,
+                        height: 300,
+                      ),
+              ),
+              Container(
+                height: 50,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 305, 8, 8),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  shape: BoxShape.rectangle,
+                                  border: Border.all(
+                                    color: Color.fromARGB(255, 151, 185, 229),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        event.category,
+                                        style: const TextStyle(
+                                          color:
+                                              Color.fromRGBO(81, 100, 255, 1),
+                                          fontFamily: 'Source Sans Pro',
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.normal,
+                                          //height: 1.5 /*PERCENT not supported*/),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 190,
+                            ),
+                            Text(
+                              event.going,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Source Sans Pro',
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                                //height: 1.5 /*PERCENT not supported*/),
+                              ),
+                            ),
+                            const Icon(
+                              Icons.arrow_forward,
+                              color: Color.fromRGBO(81, 100, 255, 1),
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                              child: Text(
+                                event.name,
+                                style: const TextStyle(
+                                  color: Color.fromRGBO(0, 0, 0, 1),
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  //height: 1.5 /*PERCENT not supported*/),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 14, 8, 0),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    shape: BoxShape.rectangle,
+                                    border: Border.all(
+                                      color: Color.fromARGB(255, 151, 185, 229),
+                                      width: 1,
+                                    ),
+                                  ),
+                                  child: const Icon(
+                                    Icons.calendar_month_sharp,
+                                    color: Color.fromRGBO(81, 100, 255, 1),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(15, 10, 0, 0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        event.date,
+                                        style: const TextStyle(
+                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                          fontFamily: 'Source Sans Pro',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          //height: 1.5 /*PERCENT not supported*/),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        event.time,
+                                        style: const TextStyle(
+                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                          fontFamily: 'Source Sans Pro',
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                          //height: 1.5 /*PERCENT not supported*/),
+                                        ),
+                                      ),
+                                      //add to my calendar button
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            shape: BoxShape.rectangle,
+                                            border: Border.all(
+                                              color: Color.fromARGB(
+                                                  255, 151, 185, 229),
+                                              width: 1,
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: Text(
+                                                  " Add to My Calendar",
+                                                  style: const TextStyle(
+                                                    color: Color.fromRGBO(
+                                                        81, 100, 255, 1),
+                                                    fontFamily:
+                                                        'Source Sans Pro',
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    //height: 1.5 /*PERCENT not supported*/),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 14, 8, 14),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    shape: BoxShape.rectangle,
+                                    border: Border.all(
+                                      color: Color.fromARGB(255, 151, 185, 229),
+                                      width: 1,
+                                    ),
+                                  ),
+                                  child: const Icon(
+                                    Icons.location_on,
+                                    color: Color.fromRGBO(81, 100, 255, 1),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(25, 10, 0, 0),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        event.location,
+                                        style: const TextStyle(
+                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                          fontFamily: 'Source Sans Pro',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          //height: 1.5 /*PERCENT not supported*/),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        event.venue,
+                                        style: const TextStyle(
+                                          color: Color.fromRGBO(0, 0, 0, 1),
+                                          fontFamily: 'Source Sans Pro',
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                          //height: 1.5 /*PERCENT not supported*/),
+                                        ),
+                                      ),
+                                      //see on maps button
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            shape: BoxShape.rectangle,
+                                            border: Border.all(
+                                              color: Color.fromARGB(
+                                                  255, 151, 185, 229),
+                                              width: 1,
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: Text(
+                                                  " See on Maps",
+                                                  style: const TextStyle(
+                                                    color: Color.fromRGBO(
+                                                        81, 100, 255, 1),
+                                                    fontFamily:
+                                                        'Source Sans Pro',
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    //height: 1.5 /*PERCENT not supported*/),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(32)),
+                            gradient: LinearGradient(
+                                begin: Alignment(-0.9, -0.9),
+                                end: Alignment(1, 1),
+                                colors: [
+                                  Color.fromRGBO(117, 132, 255, 1),
+                                  Color.fromRGBO(82, 101, 255, 1)
+                                ]),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const MyApp();
+                              }));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 13),
+                                  child: const Text(
+                                    "Organizatör Bilgilerini Görüntüle",
+                                    style: TextStyle(
+                                        fontFamily: 'Source Sans Pro',
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                                const Icon(
+                                  Icons.arrow_forward_outlined,
+                                  color: Colors.white,
+                                  size: 15,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 25, 0, 0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  shape: BoxShape.rectangle,
+                                  border: Border.all(
+                                    color: Color.fromARGB(255, 151, 185, 229),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: const Icon(
+                                  Icons.share,
+                                  color: Color.fromRGBO(81, 100, 255, 1),
+                                ),
+                              ),
+                              Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  shape: BoxShape.rectangle,
+                                  border: Border.all(
+                                    color: Color.fromARGB(255, 151, 185, 229),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: const Icon(
+                                  Icons.bookmark_border,
+                                  color: Color.fromRGBO(81, 100, 255, 1),
+                                ),
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(32)),
+                                  gradient: LinearGradient(
+                                      begin: Alignment(-0.9, -0.9),
+                                      end: Alignment(1, 1),
+                                      colors: [
+                                        Color.fromRGBO(117, 132, 255, 1),
+                                        Color.fromRGBO(82, 101, 255, 1)
+                                      ]),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return const MyApp();
+                                    }));
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 13),
+                                        child: const Text(
+                                          "                   Bilet Satın Al                   ",
+                                          style: TextStyle(
+                                              fontFamily: 'Source Sans Pro',
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

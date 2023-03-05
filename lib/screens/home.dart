@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 
+import '../Event.dart';
 import '../core/widgets/buildBaslik.dart';
 import '../core/widgets/buildEventNav.dart';
 import '../core/widgets/buildFeatured.dart';
 import '../core/widgets/buildNavigationButton.dart';
 import '../core/widgets/searchBar.dart';
+import 'package:mobil_bilet1/main.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -121,11 +123,11 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              buildEventNav(context, event),
+                              buildEventNav(context, event2),
                               const SizedBox(
                                 width: 12,
                               ),
-                              buildEventNav(context, event),
+                              buildEventNav(context, event2),
                               const SizedBox(
                                 width: 12,
                               ),

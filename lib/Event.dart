@@ -5,7 +5,10 @@ class Event {
   final String location;
   final String category;
   final String going;
+  final String venue;
   final List<String> images;
+  final String description;
+  final String time;
 
   Event({
     required this.name,
@@ -15,5 +18,8 @@ class Event {
     required this.category,
     required this.going,
     required this.images,
+    required this.description,
+    required this.time,
+    required this.venue,
   });
 }

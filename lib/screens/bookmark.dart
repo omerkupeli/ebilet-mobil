@@ -4,6 +4,7 @@ import 'package:mobil_bilet1/core/widgets/buildEventNav.dart';
 import '../core/widgets/buildNavigationButton.dart';
 import '../core/widgets/navBarBottom.dart';
 import '../core/widgets/smallButton.dart';
+import 'package:mobil_bilet1/main.dart';
 
 class BookmarkPage extends StatefulWidget {
   const BookmarkPage({super.key});

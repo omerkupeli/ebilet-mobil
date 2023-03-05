@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_stack/image_stack.dart';
 import 'package:mobil_bilet1/constants.dart';
+import 'package:mobil_bilet1/main.dart';
 import 'package:mobil_bilet1/screens/eventDetails.dart';
 import 'package:mobil_bilet1/Event.dart';
 
@@ -42,8 +43,7 @@ buildEventNav(BuildContext context, Event event) {
                     height: 150,
                     child: FittedBox(
                       fit: BoxFit.fill,
-                      child: Image.network(
-                          'https://cdn.bubilet.com.tr/files/Blog/resim-adi-76524.png'),
+                      child: Image.network(event.imageUrl),
                     ),
                   ),
                   const Padding(
@@ -186,17 +186,3 @@ buildEventNav(BuildContext context, Event event) {
     ),
   );
 }
-
-Event event = Event(
-  name: "Tarkan Konseri",
-  category: "Müzik",
-  location: "Altıeylül, Balıkesir",
-  date: "17 Ara",
-  imageUrl: "https://cdn.bubilet.com.tr/files/Blog/resim-adi-76524.png",
-  going: "20K+ Gidiyor...",
-  images: [
-    "https://picsum.photos/seed/980/600",
-    "https://picsum.photos/seed/980/600",
-    "https://picsum.photos/seed/980/600"
-  ],
-);
