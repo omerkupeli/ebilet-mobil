@@ -91,7 +91,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        buildEventNav(context, event),
+                        buildEventNav(context, event2),
                         const SizedBox(
                           width: 12,
                         ),
@@ -99,7 +99,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
                         const SizedBox(
                           width: 12,
                         ),
-                        buildEventNav(context, event),
+                        buildEventNav(context, event2),
                         const SizedBox(
                           width: 12,
                         ),
@@ -107,7 +107,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
                         const SizedBox(
                           width: 12,
                         ),
-                        buildEventNav(context, event),
+                        buildEventNav(context, event2),
                         const SizedBox(
                           width: 12,
                         ),
