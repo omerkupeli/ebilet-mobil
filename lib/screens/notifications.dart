@@ -64,11 +64,20 @@ class _NotificationsState extends State<Notifications> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: notifications.length,
                       itemBuilder: (context, index) {
-                        return buildNotification(
+                        return Dismissible(
+                          key: Key(notifications[index].title),
+                          onDismissed: (direction) {
+                            setState(() {
+                              notifications.removeAt(index);
+                            });
+                          },
+                          child: buildNotification(
                             notifications[index].image,
                             notifications[index].title,
                             notifications[index].description,
-                            notifications[index].time.toString());
+                            notifications[index].time.toString(),
+                          ),
+                        );
                       },
                     ),
                   ],
