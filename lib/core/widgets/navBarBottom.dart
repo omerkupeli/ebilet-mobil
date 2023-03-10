@@ -14,7 +14,7 @@ Widget buildBottomNavBar(BuildContext context) {
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 20),
-        color: const Color.fromARGB(143, 117, 117, 117),
+        color: Colors.transparent,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
