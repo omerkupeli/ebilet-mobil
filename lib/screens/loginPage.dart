@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_bilet1/screens/home.dart';
+
+import '../models/userModel.dart';
+import '../service/userService.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -20,6 +24,34 @@ class _LoginPageState extends State<LoginPage> {
       textFieldFocusNode.canRequestFocus =
           false; // Prevents focus if tap on eye
     });
+  }
+
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void clearText() {
+    _emailController.clear();
+    _passwordController.clear();
+  }
+
+  void loginUser(User user) async {
+    final response = await Api.loginUser(user);
+    try {
+      if (response.statusCode == 200) {
+        print(response.body);
+        print('Giriş başarılı');
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      } else {
+        print('Giriş başarısız');
+        clearText();
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -135,6 +167,11 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (_formKey.currentState != null &&
                           _formKey.currentState!.validate()) {
+                        final user = User(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                        );
+                        loginUser(user);
                         // form is valid, send data to API
                       } else {
                         setState(() {

@@ -18,4 +18,25 @@ class Api {
     );
     return response;
   }
+
+  static Future<http.Response> loginUser(User user) async {
+    final response = await http.post(
+      Uri.parse('https://reqres.in/api/login'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(user.toJson()),
+    );
+    return response;
+  }
+
+  static Future<http.Response> getUsers() async {
+    final response = await http.get(
+      Uri.parse('https://reqres.in/api/users'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    return response;
+  }
 }
