@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobil_bilet1/screens/MyCalendar.dart';
 import 'package:mobil_bilet1/screens/home.dart';
 import 'package:mobil_bilet1/screens/loginPage.dart';
+import 'package:mobil_bilet1/screens/registerPage.dart';
 
 import 'Event.dart';
 import 'MyNotifications.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: RegisterPage(),
     );
   }
 }
