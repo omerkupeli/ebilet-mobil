@@ -3,6 +3,7 @@ import 'package:mobil_bilet1/screens/MyCalendar.dart';
 import 'package:mobil_bilet1/screens/bookmark.dart';
 import 'package:mobil_bilet1/screens/home.dart';
 import 'package:mobil_bilet1/screens/notifications.dart';
+import 'package:mobil_bilet1/screens/profilePage.dart';
 
 import 'buildNavIcon.dart';
 
@@ -22,7 +23,7 @@ Widget buildBottomNavBar(BuildContext context) {
             buildNavIcon(Icons.location_on_outlined, false, context,
                 const Notifications()),
             buildNavIcon(Icons.feedback, false, context, const MyCalendar()),
-            buildNavIcon(Icons.person, false, context, const BookmarkPage()),
+            buildNavIcon(Icons.person, false, context, ProfilePage()),
           ],
         ),
       ),
