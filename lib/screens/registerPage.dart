@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mobil_bilet1/screens/loginPage.dart';
 import 'package:mobil_bilet1/service/userService.dart';
 
-import '../models/userModel.dart';
+import '../models/authModel.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -34,8 +34,8 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
-  void reegisterUser(User user) async {
-    final response = await Api.registerUser(user);
+  void reegisterUser(Auth auth) async {
+    final response = await Api.registerUser(auth);
     try {
       if (response.statusCode == 200) {
         print(response.body);
@@ -169,11 +169,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     onPressed: () {
                       if (_formKey.currentState != null &&
                           _formKey.currentState!.validate()) {
-                        final user = User(
+                        final auth = Auth(
                           password: _passwordController.text,
                           email: _emailController.text,
                         );
-                        reegisterUser(user);
+                        reegisterUser(auth);
                         // form is valid, send data to API
                       } else {
                         setState(() {

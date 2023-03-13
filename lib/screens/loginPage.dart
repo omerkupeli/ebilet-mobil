@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobil_bilet1/screens/home.dart';
 
-import '../models/userModel.dart';
+import '../models/authModel.dart';
 import '../service/userService.dart';
 
 class LoginPage extends StatefulWidget {
@@ -37,8 +37,8 @@ class _LoginPageState extends State<LoginPage> {
     _passwordController.clear();
   }
 
-  void loginUser(User user) async {
-    final response = await Api.loginUser(user);
+  void loginUser(Auth auth) async {
+    final response = await Api.loginUser(auth);
     try {
       if (response.statusCode == 200) {
         print(response.body);
@@ -167,11 +167,11 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (_formKey.currentState != null &&
                           _formKey.currentState!.validate()) {
-                        final user = User(
+                        final auth = Auth(
                           email: _emailController.text,
                           password: _passwordController.text,
                         );
-                        loginUser(user);
+                        loginUser(auth);
                         // form is valid, send data to API
                       } else {
                         setState(() {
