@@ -22,7 +22,7 @@ class Api {
 
   static Future<http.Response> loginUser(Auth auth) async {
     final response = await http.post(
-      Uri.parse('https://reqres.in/api/login'),
+      Uri.parse('https://ebiletsatis.tk/api/auth/login'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
   void loginUser(Auth auth) async {
     final response = await Api.loginUser(auth);
     try {
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         print(response.body);
         print('Giriş başarılı');
         Navigator.pushReplacement(
