@@ -1,118 +1,211 @@
+// To parse this JSON data, do
+//
+//     final events = eventsFromJson(jsonString);
+
+import 'dart:convert';
+
+Events eventsFromJson(String str) => Events.fromJson(json.decode(str));
+
+String eventsToJson(Events data) => json.encode(data.toJson());
+
 class Events {
-  Data? data;
+  Events({
+    this.id,
+    this.name,
+    this.merchantId,
+    this.categoryId,
+    this.minPrice,
+    this.seats,
+    this.tags,
+    this.description,
+    this.startDate,
+    this.endDate,
+    this.location,
+    this.image,
+    this.status,
+    this.createdAt,
+    this.deletedAt,
+    this.products,
+    this.merchant,
+    this.category,
+  });
 
-  Events({this.data});
-
-  Events.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    return data;
-  }
-}
-
-class Data {
   int? id;
   String? name;
   int? merchantId;
   int? categoryId;
   int? minPrice;
-  Null? seats;
-  Null? tags;
+  dynamic seats;
+  dynamic tags;
   String? description;
-  String? startDate;
-  String? endDate;
+  DateTime? startDate;
+  DateTime? endDate;
   String? location;
   String? image;
   int? status;
-  String? createdAt;
-  Null? deletedAt;
-  List<Products>? products;
+  DateTime? createdAt;
+  dynamic deletedAt;
+  List<Product>? products;
   Merchant? merchant;
-  Null? category;
+  dynamic category;
 
-  Data(
-      {this.id,
-      this.name,
-      this.merchantId,
-      this.categoryId,
-      this.minPrice,
-      this.seats,
-      this.tags,
-      this.description,
-      this.startDate,
-      this.endDate,
-      this.location,
-      this.image,
-      this.status,
-      this.createdAt,
-      this.deletedAt,
-      this.products,
-      this.merchant,
-      this.category});
+  Events copyWith({
+    int? id,
+    String? name,
+    int? merchantId,
+    int? categoryId,
+    int? minPrice,
+    dynamic seats,
+    dynamic tags,
+    String? description,
+    DateTime? startDate,
+    DateTime? endDate,
+    String? location,
+    String? image,
+    int? status,
+    DateTime? createdAt,
+    dynamic deletedAt,
+    List<Product>? products,
+    Merchant? merchant,
+    dynamic category,
+  }) =>
+      Events(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        merchantId: merchantId ?? this.merchantId,
+        categoryId: categoryId ?? this.categoryId,
+        minPrice: minPrice ?? this.minPrice,
+        seats: seats ?? this.seats,
+        tags: tags ?? this.tags,
+        description: description ?? this.description,
+        startDate: startDate ?? this.startDate,
+        endDate: endDate ?? this.endDate,
+        location: location ?? this.location,
+        image: image ?? this.image,
+        status: status ?? this.status,
+        createdAt: createdAt ?? this.createdAt,
+        deletedAt: deletedAt ?? this.deletedAt,
+        products: products ?? this.products,
+        merchant: merchant ?? this.merchant,
+        category: category ?? this.category,
+      );
 
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    merchantId = json['merchant_id'];
-    categoryId = json['category_id'];
-    minPrice = json['min_price'];
-    seats = json['seats'];
-    tags = json['tags'];
-    description = json['description'];
-    startDate = json['start_date'];
-    endDate = json['end_date'];
-    location = json['location'];
-    image = json['image'];
-    status = json['status'];
-    createdAt = json['created_at'];
-    deletedAt = json['deleted_at'];
-    if (json['products'] != null) {
-      products = <Products>[];
-      json['products'].forEach((v) {
-        products!.add(new Products.fromJson(v));
-      });
-    }
-    merchant = json['merchant'] != null
-        ? new Merchant.fromJson(json['merchant'])
-        : null;
-    category = json['category'];
-  }
+  factory Events.fromJson(Map<String, dynamic> json) => Events(
+    id: json["id"],
+    name: json["name"],
+    merchantId: json["merchant_id"],
+    categoryId: json["category_id"],
+    minPrice: json["min_price"],
+    seats: json["seats"],
+    tags: json["tags"],
+    description: json["description"],
+    startDate: json["start_date"] == null ? null : DateTime.parse(json["start_date"]),
+    endDate: json["end_date"] == null ? null : DateTime.parse(json["end_date"]),
+    location: json["location"],
+    image: json["image"],
+    status: json["status"],
+    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+    deletedAt: json["deleted_at"],
+    products: json["products"] == null ? [] : List<Product>.from(json["products"]!.map((x) => Product.fromJson(x))),
+    merchant: json["merchant"] == null ? null : Merchant.fromJson(json["merchant"]),
+    category: json["category"],
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['merchant_id'] = this.merchantId;
-    data['category_id'] = this.categoryId;
-    data['min_price'] = this.minPrice;
-    data['seats'] = this.seats;
-    data['tags'] = this.tags;
-    data['description'] = this.description;
-    data['start_date'] = this.startDate;
-    data['end_date'] = this.endDate;
-    data['location'] = this.location;
-    data['image'] = this.image;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
-    data['deleted_at'] = this.deletedAt;
-    if (this.products != null) {
-      data['products'] = this.products!.map((v) => v.toJson()).toList();
-    }
-    if (this.merchant != null) {
-      data['merchant'] = this.merchant!.toJson();
-    }
-    data['category'] = this.category;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "merchant_id": merchantId,
+    "category_id": categoryId,
+    "min_price": minPrice,
+    "seats": seats,
+    "tags": tags,
+    "description": description,
+    "start_date": startDate?.toIso8601String(),
+    "end_date": endDate?.toIso8601String(),
+    "location": location,
+    "image": image,
+    "status": status,
+    "created_at": createdAt?.toIso8601String(),
+    "deleted_at": deletedAt,
+    "products": products == null ? [] : List<dynamic>.from(products!.map((x) => x.toJson())),
+    "merchant": merchant?.toJson(),
+    "category": category,
+  };
 }
 
-class Products {
+class Merchant {
+  Merchant({
+    this.id,
+    this.adminId,
+    this.merchantName,
+    this.countryId,
+    this.deletedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  int? id;
+  int? adminId;
+  String? merchantName;
+  int? countryId;
+  dynamic deletedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+
+  Merchant copyWith({
+    int? id,
+    int? adminId,
+    String? merchantName,
+    int? countryId,
+    dynamic deletedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      Merchant(
+        id: id ?? this.id,
+        adminId: adminId ?? this.adminId,
+        merchantName: merchantName ?? this.merchantName,
+        countryId: countryId ?? this.countryId,
+        deletedAt: deletedAt ?? this.deletedAt,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+      );
+
+  factory Merchant.fromJson(Map<String, dynamic> json) => Merchant(
+    id: json["id"],
+    adminId: json["admin_id"],
+    merchantName: json["merchant_name"],
+    countryId: json["country_id"],
+    deletedAt: json["deleted_at"],
+    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "admin_id": adminId,
+    "merchant_name": merchantName,
+    "country_id": countryId,
+    "deleted_at": deletedAt,
+    "created_at": createdAt?.toIso8601String(),
+    "updated_at": updatedAt?.toIso8601String(),
+  };
+}
+
+class Product {
+  Product({
+    this.id,
+    this.name,
+    this.description,
+    this.price,
+    this.status,
+    this.eventId,
+    this.categoryId,
+    this.deletedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
+
   int? id;
   String? name;
   String? description;
@@ -120,88 +213,58 @@ class Products {
   int? status;
   int? eventId;
   int? categoryId;
-  Null? deletedAt;
-  String? createdAt;
-  String? updatedAt;
+  dynamic deletedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
-  Products(
-      {this.id,
-      this.name,
-      this.description,
-      this.price,
-      this.status,
-      this.eventId,
-      this.categoryId,
-      this.deletedAt,
-      this.createdAt,
-      this.updatedAt});
+  Product copyWith({
+    int? id,
+    String? name,
+    String? description,
+    int? price,
+    int? status,
+    int? eventId,
+    int? categoryId,
+    dynamic deletedAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) =>
+      Product(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        description: description ?? this.description,
+        price: price ?? this.price,
+        status: status ?? this.status,
+        eventId: eventId ?? this.eventId,
+        categoryId: categoryId ?? this.categoryId,
+        deletedAt: deletedAt ?? this.deletedAt,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+      );
 
-  Products.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = json['description'];
-    price = json['price'];
-    status = json['status'];
-    eventId = json['event_id'];
-    categoryId = json['category_id'];
-    deletedAt = json['deleted_at'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+    id: json["id"],
+    name: json["name"],
+    description: json["description"],
+    price: json["price"],
+    status: json["status"],
+    eventId: json["event_id"],
+    categoryId: json["category_id"],
+    deletedAt: json["deleted_at"],
+    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
+  );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['description'] = this.description;
-    data['price'] = this.price;
-    data['status'] = this.status;
-    data['event_id'] = this.eventId;
-    data['category_id'] = this.categoryId;
-    data['deleted_at'] = this.deletedAt;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    return data;
-  }
-}
-
-class Merchant {
-  int? id;
-  int? adminId;
-  String? merchantName;
-  int? countryId;
-  Null? deletedAt;
-  String? createdAt;
-  String? updatedAt;
-
-  Merchant(
-      {this.id,
-      this.adminId,
-      this.merchantName,
-      this.countryId,
-      this.deletedAt,
-      this.createdAt,
-      this.updatedAt});
-
-  Merchant.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    adminId = json['admin_id'];
-    merchantName = json['merchant_name'];
-    countryId = json['country_id'];
-    deletedAt = json['deleted_at'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['admin_id'] = this.adminId;
-    data['merchant_name'] = this.merchantName;
-    data['country_id'] = this.countryId;
-    data['deleted_at'] = this.deletedAt;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "description": description,
+    "price": price,
+    "status": status,
+    "event_id": eventId,
+    "category_id": categoryId,
+    "deleted_at": deletedAt,
+    "created_at": createdAt?.toIso8601String(),
+    "updated_at": updatedAt?.toIso8601String(),
+  };
 }
