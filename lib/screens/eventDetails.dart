@@ -6,9 +6,10 @@ import 'package:mobil_bilet1/main.dart';
 import 'package:mobil_bilet1/screens/ticket.dart';
 
 import '../constants.dart';
+import '../models/eventModel.dart';
 
 class EventDetails extends StatelessWidget {
-  final Event event;
+  final Events event;
 
   EventDetails(this.event);
 
@@ -39,9 +40,9 @@ class EventDetails extends StatelessWidget {
               child: Stack(
                 children: [
                   Container(
-                    child: event.imageUrl != null
+                    child: event.image != null
                         ? Image.network(
-                            event.imageUrl,
+                            event.image.toString(),
                             fit: BoxFit.cover,
                             height: 300,
                           )
@@ -121,7 +122,7 @@ class EventDetails extends StatelessWidget {
                                   width: 190,
                                 ),
                                 Text(
-                                  event.going,
+                                  "25k+ people are going",
                                   style: const TextStyle(
                                     color: Colors.black,
                                     fontFamily: 'Source Sans Pro',
@@ -143,7 +144,7 @@ class EventDetails extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.fromLTRB(8, 8, 8, 0),
                                   child: Text(
-                                    event.name,
+                                    event.name.toString(),
                                     style: const TextStyle(
                                       color: Color.fromRGBO(0, 0, 0, 1),
                                       fontFamily: 'Source Sans Pro',
@@ -183,7 +184,7 @@ class EventDetails extends StatelessWidget {
                                       child: Column(
                                         children: [
                                           Text(
-                                            event.date,
+                                            event.startDate.toString(),
                                             style: const TextStyle(
                                               color: Color.fromRGBO(0, 0, 0, 1),
                                               fontFamily: 'Source Sans Pro',
@@ -196,7 +197,7 @@ class EventDetails extends StatelessWidget {
                                             height: 3,
                                           ),
                                           Text(
-                                            event.time,
+                                            event.endDate.toString(),
                                             style: const TextStyle(
                                               color: Color.fromRGBO(0, 0, 0, 1),
                                               fontFamily: 'Source Sans Pro',
@@ -279,7 +280,7 @@ class EventDetails extends StatelessWidget {
                                       child: Column(
                                         children: [
                                           Text(
-                                            event.location,
+                                            event.location.toString(),
                                             style: const TextStyle(
                                               color: Color.fromRGBO(0, 0, 0, 1),
                                               fontFamily: 'Source Sans Pro',
@@ -292,7 +293,7 @@ class EventDetails extends StatelessWidget {
                                             height: 3,
                                           ),
                                           Text(
-                                            event.venue,
+                                            event.location.toString(),
                                             style: const TextStyle(
                                               color: Color.fromRGBO(0, 0, 0, 1),
                                               fontFamily: 'Source Sans Pro',
@@ -604,7 +605,7 @@ class EventDetails extends StatelessWidget {
                                         Container(
                                           alignment: Alignment.topLeft,
                                           child: Text(
-                                            event.description,
+                                            event.description.toString(),
                                             softWrap: true,
                                             style: TextStyle(
                                               color: Color.fromRGBO(0, 0, 0, 1),
