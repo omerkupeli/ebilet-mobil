@@ -4,8 +4,11 @@ import 'package:mobil_bilet1/constants.dart';
 import 'package:mobil_bilet1/main.dart';
 import 'package:mobil_bilet1/screens/eventDetails.dart';
 import 'package:mobil_bilet1/Event.dart';
+import 'package:mobil_bilet1/screens/home.dart';
 
-buildEventNav(BuildContext context, Event event) {
+import '../../models/eventModel.dart';
+
+buildEventNav(BuildContext context, List<Events> event, int index) {
   List<String> images = [
     'https://picsum.photos/seed/980/600',
     'https://picsum.photos/seed/980/600',
@@ -21,7 +24,7 @@ buildEventNav(BuildContext context, Event event) {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => EventDetails(event)),
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             },
             child: Container(
@@ -43,13 +46,16 @@ buildEventNav(BuildContext context, Event event) {
                     height: 150,
                     child: FittedBox(
                       fit: BoxFit.fill,
-                      child: Image.network(event.imageUrl),
+                      child: Image.network(
+                        "https://cdn.bubilet.com.tr/files/Blog/resim-adi-76524.png",
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 20, 0, 12),
                     child: Text(
-                      event.name,
+                      event.elementAt(index).name.toString(),
                       textAlign: TextAlign.start,
                       style: const TextStyle(
                           fontSize: 16,
@@ -80,7 +86,7 @@ buildEventNav(BuildContext context, Event event) {
                               //Mask holder Template
                               SizedBox(width: 8, height: 20, child: null),
                               Text(
-                                event.category,
+                                event.elementAt(index).category.toString(),
                                 textAlign: TextAlign.left,
                                 style: const TextStyle(
                                   color: Color.fromRGBO(81, 100, 255, 1),
@@ -117,7 +123,7 @@ buildEventNav(BuildContext context, Event event) {
                       Padding(
                         padding: EdgeInsets.only(left: 4.0),
                         child: Text(
-                          event.going,
+                          "25k+ people",
                           style: const TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w400,
@@ -140,7 +146,7 @@ buildEventNav(BuildContext context, Event event) {
                       Padding(
                         padding: EdgeInsets.only(left: 5.0, top: 11),
                         child: Text(
-                          event.location,
+                          event.elementAt(index).location.toString(),
                           style: const TextStyle(
                             fontFamily: 'Source Sans Pro',
                             fontSize: 10,
@@ -172,7 +178,7 @@ buildEventNav(BuildContext context, Event event) {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
                   child: Text(
-                    event.date,
+                    event.elementAt(index).startDate.toString(),
                     style: TextStyle(
                         fontFamily: 'Source Sans Pro',
                         fontSize: 12,

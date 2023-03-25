@@ -62,8 +62,12 @@ class _EventTestPageState extends State<EventTestPage> {
                 itemCount: events.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(events.elementAt(index).name.toString()),
-                    subtitle: Text(events.elementAt(index).description.toString()),
+                    title: Text(events.elementAt(index).name.toString() +
+                        index.toString() +
+                        " " +
+                        events.length.toString()),
+                    subtitle:
+                        Text(events.elementAt(index).description.toString()),
                   );
                 },
               ),

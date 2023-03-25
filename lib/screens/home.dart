@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 
@@ -9,6 +11,9 @@ import '../core/widgets/buildNavigationButton.dart';
 import '../core/widgets/searchBar.dart';
 import 'package:mobil_bilet1/main.dart';
 
+import '../models/eventModel.dart';
+import '../service/eventService.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -17,6 +22,34 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Events> events = [];
+  var ivent;
+  Future<void> getEvents() async {
+    final response = await EventApi.getEvents();
+
+    try {
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        for (ivent in data['data']) {
+          events.add(Events.fromJson(ivent));
+          print("***************");
+          print(ivent);
+        }
+        setState(() {});
+      } else {
+        print('Hata');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getEvents();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,32 +154,15 @@ class _HomePageState extends State<HomePage> {
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              buildEventNav(context, event2),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event2),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
+                              for (var i = 0; i < events.length; i++)
+                                Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(4, 0, 4, 0),
+                                    child: buildEventNav(context, events, i))
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const SizedBox(
@@ -160,35 +176,24 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           height: 8,
                         ),
+                        // ListView.builder(
+                        //   itemCount: events.length,
+                        //   itemBuilder: (context, index) {
+                        //     return buildEventNav(context, events, index);
+                        //   },
+                        // )
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
+                              for (var i = 0; i < events.length; i++)
+                                Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(4, 0, 4, 0),
+                                    child: buildEventNav(context, events, i))
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const SizedBox(
@@ -200,35 +205,24 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           height: 8,
                         ),
+                        // ListView.builder(
+                        //   itemCount: events.length,
+                        //   itemBuilder: (context, index) {
+                        //     return buildEventNav(context, events, index);
+                        //   },
+                        // )
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
-                              const SizedBox(
-                                width: 12,
-                              ),
-                              buildEventNav(context, event),
+                              for (var i = 0; i < events.length; i++)
+                                Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(4, 0, 4, 0),
+                                    child: buildEventNav(context, events, i))
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const SizedBox(
