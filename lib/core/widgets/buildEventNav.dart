@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:image_stack/image_stack.dart';
 import 'package:mobil_bilet1/constants.dart';
@@ -24,7 +26,8 @@ buildEventNav(BuildContext context, List<Events> event, int index) {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(
+                    builder: (context) => EventDetails(event, index)),
               );
             },
             child: Container(

@@ -15,6 +15,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   final textFieldFocusNode = FocusNode();
   bool _obscured = false;
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
@@ -31,6 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _nameController.dispose();
     super.dispose();
   }
 
@@ -54,6 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void clearText() {
     _emailController.clear();
     _passwordController.clear();
+    _nameController.clear();
   }
 
   @override
@@ -104,6 +107,26 @@ class _RegisterPageState extends State<RegisterPage> {
                   },
                   decoration: InputDecoration(
                     labelText: 'Email',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Container(
+                height: 60,
+                child: TextFormField(
+                  controller: _nameController,
+                  keyboardType: TextInputType.visiblePassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Lütfen adınızı girin';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Ad',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
@@ -172,6 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         final auth = Auth(
                           password: _passwordController.text,
                           email: _emailController.text,
+                          name: _nameController.text,
                         );
                         reegisterUser(auth);
                         // form is valid, send data to API
@@ -190,7 +214,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   Text('Hesabın Var mı?'),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
                     child: Text('Giriş Yap'),
                   ),
                 ],

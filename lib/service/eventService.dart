@@ -18,7 +18,7 @@ class EventApi {
 
   static Future<http.Response> getEvent(String id) async {
     final response = await http.get(
-      Uri.parse('https://reqres.in/api/events/$id'),
+      Uri.parse('https://ebiletsatis.tk/api/events/$id'),
       headers: headers,
     );
     return response;

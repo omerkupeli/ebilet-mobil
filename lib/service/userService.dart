@@ -11,7 +11,7 @@ Map<String, String> headers = {
 class Api {
   static Future<http.Response> registerUser(Auth auth) async {
     final response = await http.post(
-      Uri.parse('https://reqres.in/api/register'),
+      Uri.parse('https://ebiletsatis.tk/api/auth/register'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
