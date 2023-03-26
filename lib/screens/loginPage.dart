@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobil_bilet1/screens/home.dart';
+import 'package:mobil_bilet1/screens/registerPage.dart';
 
 import '../models/authModel.dart';
 import '../service/userService.dart';
@@ -198,7 +199,12 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Text('Hesabın yok mu?'),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterPage()));
+                    },
                     child: Text('Kayıt Ol'),
                   ),
                 ],
