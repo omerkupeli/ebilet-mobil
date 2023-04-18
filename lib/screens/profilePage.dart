@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:mobil_bilet1/core/widgets/buildNavIcon.dart';
 import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
+import 'package:mobil_bilet1/screens/createEvent.dart';
 import 'package:mobil_bilet1/screens/editProfile.dart';
 import 'package:mobil_bilet1/screens/home.dart';
 import 'package:mobil_bilet1/service/userService.dart';
@@ -69,8 +70,17 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ],
                               ),
                             ),
-                            buildNavIcon(
-                                Icons.edit, true, context, EditProfile())
+                            Row(
+                              children: [
+                                buildNavIcon(Icons.add_circle_rounded, true,
+                                    context, CreateEvent()),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                buildNavIcon(
+                                    Icons.edit, true, context, EditProfile()),
+                              ],
+                            )
                           ],
                         ),
                         const SizedBox(
