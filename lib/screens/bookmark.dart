@@ -91,14 +91,6 @@ class _BookmarkPageState extends State<BookmarkPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          "Öne Çıkanlar",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
                         // buildEventNav(context, event2),
                         // const SizedBox(
                         //   width: 12,

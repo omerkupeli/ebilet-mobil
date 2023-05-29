@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mobil_bilet1/models/eventModel.dart';
+import 'package:mobil_bilet1/service/eventService.dart';
+import 'dart:convert';
 
 class CreateEvent extends StatefulWidget {
   @override
@@ -12,6 +15,17 @@ class _CreateEventState extends State<CreateEvent> {
   DateTime now = DateTime.now();
   TextEditingController dateController = TextEditingController();
   TextEditingController timeController = TextEditingController();
+  TextEditingController eventNameController = TextEditingController();
+  TextEditingController eventLocationController = TextEditingController();
+  TextEditingController eventDescriptionController = TextEditingController();
+  TextEditingController eventTagsController = TextEditingController();
+  TextEditingController durationController = TextEditingController();
+  TextEditingController statusController = TextEditingController();
+  //selected status
+  String selectedStatus = "Aktif";
+  //status
+  List<String> status = ["Aktif", "Pasif"];
+  Events event = Events();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,6 +161,7 @@ class _CreateEventState extends State<CreateEvent> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: TextFormField(
+                            controller: eventNameController,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Etkinlik Adı"),
@@ -179,6 +194,7 @@ class _CreateEventState extends State<CreateEvent> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: TextFormField(
+                            controller: eventTagsController,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Etkinlik Türü"),
@@ -249,7 +265,7 @@ class _CreateEventState extends State<CreateEvent> {
                       Row(
                         children: [
                           const Text(
-                            "Etkinlik Saatleri",
+                            "Etkinlik Süresi",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.normal),
                           ),
@@ -267,80 +283,19 @@ class _CreateEventState extends State<CreateEvent> {
                           ),
                         ),
                         child: Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: TextField(
-                                controller:
-                                    timeController, //editing controller of this TextField
-                                decoration: const InputDecoration(
-                                    icon: Icon(
-                                        Icons.access_time), //icon of text field
-                                    labelText:
-                                        "Başlangıç Saati" //label text of field
-                                    ),
-                                readOnly:
-                                    true, // when true user cannot edit text
-                                onTap: () async {
-                                  TimeOfDay? pickedTime = await showTimePicker(
-                                    context: context,
-                                    initialTime: TimeOfDay.now(),
-                                  );
-                                  if (pickedTime != null) {
-                                    String formattedTime =
-                                        pickedTime.format(context);
-
-                                    setState(() {
-                                      timeController.text =
-                                          formattedTime.toString();
-                                    });
-                                  } else {
-                                    print("Seçilmedi");
-                                  }
-                                  //when click we have to show the datepicker
-                                })),
+                          padding: const EdgeInsets.only(left: 10),
+                          child: TextFormField(
+                            controller: durationController,
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Etkinlik Süresi"),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 8,
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                            color: Colors.blue[500]!,
-                          ),
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: TextField(
-                                controller:
-                                    timeController, //editing controller of this TextField
-                                decoration: const InputDecoration(
-                                    icon: Icon(
-                                        Icons.access_time), //icon of text field
-                                    labelText:
-                                        "Bitiş Saati" //label text of field
-                                    ),
-                                readOnly:
-                                    true, // when true user cannot edit text
-                                onTap: () async {
-                                  TimeOfDay? pickedTime = await showTimePicker(
-                                    context: context,
-                                    initialTime: TimeOfDay.now(),
-                                  );
-                                  if (pickedTime != null) {
-                                    String formattedTime =
-                                        pickedTime.format(context);
 
-                                    setState(() {
-                                      timeController.text =
-                                          formattedTime.toString();
-                                    });
-                                  } else {
-                                    print("Seçilmedi");
-                                  }
-                                  //when click we have to show the datepicker
-                                })),
-                      ),
                       SizedBox(
                         height: 8,
                       ),
@@ -368,6 +323,7 @@ class _CreateEventState extends State<CreateEvent> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: TextFormField(
+                            controller: eventLocationController,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Etkinlik Adresi"),
@@ -377,35 +333,35 @@ class _CreateEventState extends State<CreateEvent> {
                       SizedBox(
                         height: 8,
                       ),
-                      Row(
-                        children: [
-                          const Text(
-                            "Adres Detayı",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.normal),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                            color: Colors.blue[500]!,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Adres Detayı"),
-                          ),
-                        ),
-                      ),
+                      // Row(
+                      //   children: [
+                      //     const Text(
+                      //       "Adres Detayı",
+                      //       style: TextStyle(
+                      //           fontSize: 15, fontWeight: FontWeight.normal),
+                      //     ),
+                      //   ],
+                      // ),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.transparent,
+                      //     borderRadius: BorderRadius.circular(16),
+                      //     border: Border.all(
+                      //       color: Colors.blue[500]!,
+                      //     ),
+                      //   ),
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.only(left: 10),
+                      //     child: TextFormField(
+                      //       decoration: InputDecoration(
+                      //           border: InputBorder.none,
+                      //           hintText: "Adres Detayı"),
+                      //     ),
+                      //   ),
+                      // ),
                       SizedBox(
                         height: 8,
                       ),
@@ -433,6 +389,7 @@ class _CreateEventState extends State<CreateEvent> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: TextFormField(
+                            controller: eventDescriptionController,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Etkinlik Açıklaması"),
@@ -442,10 +399,45 @@ class _CreateEventState extends State<CreateEvent> {
                       SizedBox(
                         height: 8,
                       ),
+                      // Row(
+                      //   children: [
+                      //     const Text(
+                      //       "Etkinlik Konumu Ekle",
+                      //       style: TextStyle(
+                      //           fontSize: 15, fontWeight: FontWeight.normal),
+                      //     ),
+                      //   ],
+                      // ),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      // Container(
+                      //   height: 150,
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.transparent,
+                      //     borderRadius: BorderRadius.circular(16),
+                      //     border: Border.all(
+                      //       color: Colors.blue[500]!,
+                      //     ),
+                      //   ),
+                      //   child: Padding(
+                      //       padding: const EdgeInsets.only(left: 10),
+                      //       child: Container(
+                      //         alignment: Alignment.center,
+                      //         child: Icon(
+                      //           Icons.add_location_alt,
+                      //           color: Colors.blue,
+                      //         ),
+                      //       )),
+                      // ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      //status
                       Row(
                         children: [
                           const Text(
-                            "Etkinlik Konumu Ekle",
+                            "Etkinlik Durumu",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.normal),
                           ),
@@ -455,7 +447,6 @@ class _CreateEventState extends State<CreateEvent> {
                         height: 10,
                       ),
                       Container(
-                        height: 150,
                         decoration: BoxDecoration(
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(16),
@@ -464,14 +455,29 @@ class _CreateEventState extends State<CreateEvent> {
                           ),
                         ),
                         child: Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Icon(
-                                Icons.add_location_alt,
-                                color: Colors.blue,
-                              ),
-                            )),
+                          padding: const EdgeInsets.only(left: 10),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              hint: Text("Etkinlik Durumu"),
+                              dropdownColor: Colors.white,
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 36,
+                              isExpanded: true,
+                              value: selectedStatus,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  selectedStatus = newValue.toString();
+                                });
+                              },
+                              items: status.map((status) {
+                                return DropdownMenuItem(
+                                  child: new Text(status),
+                                  value: status,
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 15,
@@ -784,14 +790,32 @@ class _CreateEventState extends State<CreateEvent> {
                         ),
                         child: TextButton(
                           onPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content:
-                                    Text('Etkinlik Oluşturuldu ve Yayınlandı'),
-                                duration: Duration(seconds: 2),
-                                backgroundColor: Colors.grey,
-                              ),
-                            );
+                            final event = Events(
+                                name: " eventNameController.text",
+                                merchantId: null,
+                                categoryId: null,
+                                description: "eventDescriptionController.text",
+                                minPrice: null,
+                                seats: null,
+                                tags: null,
+                                startDate: DateFormat("yyyy-MM-dd HH:mm:ss")
+                                    .parse(DateTime.now().toString()),
+                                endDate: DateFormat("yyyy-MM-dd HH:mm:ss")
+                                    .parse(DateTime.now().toString()),
+                                location: "eventLocationController.text",
+                                image:
+                                    "https://cdn.bubilet.com.tr/files/Blog/resim-adi-76524.png",
+                                status: null,
+                                category: null);
+                            EventApi.createEvent(event);
+                            // // ScaffoldMessenger.of(context).showSnackBar(
+                            // //   const SnackBar(
+                            // //     content:
+                            // //         Text('Etkinlik Oluşturuldu ve Yayınlandı'),
+                            // //     duration: Duration(seconds: 2),
+                            // //     backgroundColor: Colors.grey,
+                            // //   ),
+                            // // );
                           },
                           child: const Text(
                             'Etkinlik Oluştur ve Yayınla',

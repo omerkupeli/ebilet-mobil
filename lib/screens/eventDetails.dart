@@ -3,7 +3,6 @@ import 'package:image_stack/image_stack.dart';
 import 'package:mobil_bilet1/Event.dart';
 import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 import 'package:mobil_bilet1/main.dart';
-import 'package:mobil_bilet1/screens/ticket.dart';
 
 import '../constants.dart';
 import '../models/eventModel.dart';
@@ -468,13 +467,13 @@ class EventDetails extends StatelessWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           GestureDetector(
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          TicketScreen()));
-                                            },
+                                            // onTap: () {
+                                            //   Navigator.push(
+                                            //       context,
+                                            //       MaterialPageRoute(
+                                            //           builder: (context) =>
+                                            //               TicketScreen()));
+                                            // },
                                             child: Container(
                                               padding:
                                                   const EdgeInsets.symmetric(

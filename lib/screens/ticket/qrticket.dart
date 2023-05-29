@@ -20,7 +20,7 @@ QrImage qrImage = QrImage(
   version: QrVersions.auto,
   size: 200.0,
 );
-String ticketNumber = "000000";
+String ticketNumber = "812736";
 
 class TicketScreen extends StatefulWidget {
   const TicketScreen({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class TicketScreen extends StatefulWidget {
 }
 
 class _TicketScreenState extends State<TicketScreen> {
-  String ticketNumber = "000000";
+  String ticketNumber = "812736";
 
   int count = 0;
   Widget build(BuildContext context) {
@@ -65,11 +65,11 @@ class _TicketScreenState extends State<TicketScreen> {
             ),
             SizedBox(height: 20.0),
             qrImage ?? SizedBox(),
-            ElevatedButton(
-                onPressed: () {
-                  count == 0 ? createNewTicket() : null;
-                },
-                child: Text('E-Bilet Oluştur'))
+            // ElevatedButton(
+            //     onPressed: () {
+            //       count == 0 ? createNewTicket() : null;
+            //     },
+            //     child: Text('E-Bilet Oluştur'))
           ],
         ),
       ),
