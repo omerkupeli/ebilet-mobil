@@ -4,6 +4,7 @@ import 'package:mobil_bilet1/screens/bookmark.dart';
 import 'package:mobil_bilet1/screens/home.dart';
 import 'package:mobil_bilet1/screens/notifications.dart';
 import 'package:mobil_bilet1/screens/profilePage.dart';
+import 'package:mobil_bilet1/screens/ticket/myTickets.dart';
 
 import 'buildNavIcon.dart';
 
@@ -20,9 +21,9 @@ Widget buildBottomNavBar(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             buildNavIcon(Icons.home, true, context, const HomePage()),
-            buildNavIcon(Icons.location_on_outlined, false, context,
-                const Notifications()),
-            buildNavIcon(Icons.feedback, false, context, const MyCalendar()),
+            buildNavIcon(Icons.money, false, context, MyTicketsPage()),
+            buildNavIcon(
+                Icons.calendar_month, false, context, const MyCalendar()),
             buildNavIcon(Icons.person, false, context, ProfilePage()),
           ],
         ),

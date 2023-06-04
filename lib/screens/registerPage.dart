@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final textFieldFocusNode = FocusNode();
-  bool _obscured = false;
+  bool _obscured = true;
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   void _toggleObscured() {
     setState(() {
@@ -98,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 60,
                 child: TextFormField(
                   controller: _emailController,
-                  keyboardType: TextInputType.visiblePassword,
+                  keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Lütfen email adresinizi girin';
@@ -118,7 +118,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 60,
                 child: TextFormField(
                   controller: _nameController,
-                  keyboardType: TextInputType.visiblePassword,
+                  keyboardType: TextInputType.name,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Lütfen adınızı girin';
@@ -145,7 +145,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     return null;
                   },
                   obscureText: _obscured,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.visiblePassword,
                   focusNode: textFieldFocusNode,
                   decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -161,8 +161,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           onTap: _toggleObscured,
                           child: Icon(
                             _obscured
-                                ? Icons.visibility_rounded
-                                : Icons.visibility_off_rounded,
+                                ? Icons.visibility_off_rounded
+                                : Icons.visibility_rounded,
                             size: 24,
                           ),
                         ),

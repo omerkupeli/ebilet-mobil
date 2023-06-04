@@ -32,8 +32,6 @@ class _HomePageState extends State<HomePage> {
         final data = jsonDecode(response.body);
         for (ivent in data['data']) {
           events.add(Events.fromJson(ivent));
-          print("***************");
-          print(ivent);
         }
         setState(() {});
       } else {
@@ -63,41 +61,13 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //BASLİK
+                    SizedBox(
+                      height: 16,
+                    ),
                     Padding(
-                        padding: const EdgeInsets.only(top: 24),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.location_on_sharp,
-                              color: Colors.black,
-                            ),
-                            Column(
-                              children: const [
-                                Text(
-                                  "Event",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 25,
-                                    color: Color.fromARGB(255, 43, 0, 0),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  "Event Hall",
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 18,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                    //SEARCH BAR
-                    buildSearchBar(context),
+                      padding: const EdgeInsets.all(8.0),
+                      child: buildSearchBar(context),
+                    ),
 
                     Column(
                       children: [buildFeatured()],

@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:mobil_bilet1/screens/ticket/myTickets.dart';
 import 'package:mobil_bilet1/screens/ticket/qrticket.dart';
+import 'package:mobil_bilet1/service/eventService.dart';
 
 import '../../core/widgets/smallButton.dart';
+import '../../models/eventModel.dart';
 
 class PaymentPage extends StatefulWidget {
+  final Events event;
+  final int total;
+  PaymentPage(this.event, this.total);
   @override
   State<PaymentPage> createState() => _PaymentPageState();
 }
 
 class _PaymentPageState extends State<PaymentPage> {
   void _onButtonPressed() {
+    EventApi.checkoutEvent(int.parse(widget.event.id.toString()), widget.total);
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => TicketScreen()),
+      MaterialPageRoute(
+        builder: (context) => MyTicketsPage(),
+      ),
     );
   }
 
@@ -121,7 +130,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                 const SizedBox(
                                   width: 12,
                                 ),
-                                Text("****** Kartım"),
+                                Text("***** Kartım"),
                                 const SizedBox(
                                   width: 80,
                                 ),

@@ -181,7 +181,11 @@ buildEventNav(BuildContext context, List<Events> event, int index) {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 8.0),
                   child: Text(
-                    event.elementAt(index).startDate.toString(),
+                    event
+                        .elementAt(index)
+                        .startDate
+                        .toString()
+                        .substring(0, 16),
                     style: TextStyle(
                         fontFamily: 'Source Sans Pro',
                         fontSize: 12,

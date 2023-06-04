@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final textFieldFocusNode = FocusNode();
-  bool _obscured = false;
+  bool _obscured = true;
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   void _toggleObscured() {
     setState(() {
@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 60,
                 child: TextFormField(
                   controller: _emailController,
-                  keyboardType: TextInputType.visiblePassword,
+                  keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Lütfen email adresinizi girin';
@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
                   obscureText: _obscured,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.visiblePassword,
                   focusNode: textFieldFocusNode,
                   decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -137,8 +137,8 @@ class _LoginPageState extends State<LoginPage> {
                           onTap: _toggleObscured,
                           child: Icon(
                             _obscured
-                                ? Icons.visibility_rounded
-                                : Icons.visibility_off_rounded,
+                                ? Icons.visibility_off_rounded
+                                : Icons.visibility_rounded,
                             size: 24,
                           ),
                         ),

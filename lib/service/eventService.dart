@@ -35,4 +35,41 @@ class EventApi {
     );
     return response;
   }
+
+  //checkout event post send event_id and price
+  static Future<http.Response> checkoutEvent(int eventId, int price) async {
+    final response = await http.post(
+      Uri.parse('https://ebiletsatis.tk/api/checkout'),
+      headers: headers,
+      body: jsonEncode({
+        "event_id": eventId,
+        "price": price,
+      }),
+    );
+    print(response.body);
+    return response;
+  }
+
+  //post use ticket with booking number
+  static Future<http.Response> useTicket(String bookingNumber) async {
+    final response = await http.post(
+      Uri.parse('https://ebiletsatis.tk/api/useTicket'),
+      headers: headers,
+      body: jsonEncode({
+        "booking_number": bookingNumber,
+      }),
+    );
+    print(response.body);
+    return response;
+  }
+
+  //get bookings
+  static Future<http.Response> getBookings() async {
+    final response = await http.get(
+      Uri.parse('https://ebiletsatis.tk/api/getBookings'),
+      headers: headers,
+    );
+    print(response.body);
+    return response;
+  }
 }

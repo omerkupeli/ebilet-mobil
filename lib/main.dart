@@ -3,13 +3,16 @@ import 'package:mobil_bilet1/screens/MyCalendar.dart';
 import 'package:mobil_bilet1/screens/bookmark.dart';
 import 'package:mobil_bilet1/screens/createEvent.dart';
 import 'package:mobil_bilet1/screens/editProfile.dart';
+import 'package:mobil_bilet1/screens/eventDetails.dart';
 import 'package:mobil_bilet1/screens/eventTest.dart';
 import 'package:mobil_bilet1/screens/home.dart';
 import 'package:mobil_bilet1/screens/loginPage.dart';
 import 'package:mobil_bilet1/screens/profilePage.dart';
 import 'package:mobil_bilet1/screens/registerPage.dart';
 import 'package:mobil_bilet1/screens/ticket/buyTicket.dart';
+import 'package:mobil_bilet1/screens/ticket/myTickets.dart';
 import 'package:mobil_bilet1/screens/ticket/payment.dart';
+import 'package:mobil_bilet1/screens/ticket/qrReader.dart';
 
 import 'Event.dart';
 import 'MyNotifications.dart';
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

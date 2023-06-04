@@ -3,6 +3,7 @@ import 'package:image_stack/image_stack.dart';
 import 'package:mobil_bilet1/Event.dart';
 import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 import 'package:mobil_bilet1/main.dart';
+import 'package:mobil_bilet1/screens/ticket/buyTicket.dart';
 
 import '../constants.dart';
 import '../models/eventModel.dart';
@@ -72,11 +73,11 @@ class EventDetails extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(8, 8, 8, 35),
                     child: Container(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 305, 8, 8),
+                        padding: const EdgeInsets.fromLTRB(8, 200, 8, 8),
                         child: Column(
                           children: [
                             Row(
-                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -114,22 +115,23 @@ class EventDetails extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(
-                                  width: 190,
-                                ),
-                                Text(
-                                  "25k+ people ",
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontFamily: 'Source Sans Pro',
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.normal,
-                                    //height: 1.5 /*PERCENT not supported*/),
-                                  ),
-                                ),
-                                const Icon(
-                                  Icons.arrow_forward,
-                                  color: Color.fromRGBO(81, 100, 255, 1),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "25k+ people",
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: 'Source Sans Pro',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.normal,
+                                        //height: 1.5 /*PERCENT not supported*/),
+                                      ),
+                                    ),
+                                    const Icon(
+                                      Icons.arrow_forward,
+                                      color: Color.fromRGBO(81, 100, 255, 1),
+                                    ),
+                                  ],
                                 )
                               ],
                             ),
@@ -178,12 +180,15 @@ class EventDetails extends StatelessWidget {
                                       padding: const EdgeInsets.fromLTRB(
                                           15, 10, 0, 0),
                                       child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             event
                                                 .elementAt(id)
                                                 .startDate
-                                                .toString(),
+                                                .toString()
+                                                .substring(0, 16),
                                             style: const TextStyle(
                                               color: Color.fromRGBO(0, 0, 0, 1),
                                               fontFamily: 'Source Sans Pro',
@@ -199,7 +204,8 @@ class EventDetails extends StatelessWidget {
                                             event
                                                 .elementAt(id)
                                                 .endDate
-                                                .toString(),
+                                                .toString()
+                                                .substring(0, 16),
                                             style: const TextStyle(
                                               color: Color.fromRGBO(0, 0, 0, 1),
                                               fontFamily: 'Source Sans Pro',
@@ -210,7 +216,8 @@ class EventDetails extends StatelessWidget {
                                           ),
                                           //add to my calendar button
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding:
+                                                const EdgeInsets.only(top: 8.0),
                                             child: Container(
                                               decoration: BoxDecoration(
                                                 borderRadius:
@@ -280,6 +287,8 @@ class EventDetails extends StatelessWidget {
                                       padding: const EdgeInsets.fromLTRB(
                                           25, 10, 0, 0),
                                       child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             event
@@ -312,7 +321,8 @@ class EventDetails extends StatelessWidget {
                                           ),
                                           //see on maps button
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding:
+                                                const EdgeInsets.only(top: 8.0),
                                             child: Container(
                                               decoration: BoxDecoration(
                                                 borderRadius:
@@ -406,39 +416,50 @@ class EventDetails extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      shape: BoxShape.rectangle,
-                                      border: Border.all(
-                                        color:
-                                            Color.fromARGB(255, 151, 185, 229),
-                                        width: 1,
+                                  Row(
+                                    children: [
+                                      Container(
+                                        width: 40,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          shape: BoxShape.rectangle,
+                                          border: Border.all(
+                                            color: Color.fromARGB(
+                                                255, 151, 185, 229),
+                                            width: 1,
+                                          ),
+                                        ),
+                                        child: const Icon(
+                                          Icons.share,
+                                          color:
+                                              Color.fromRGBO(81, 100, 255, 1),
+                                        ),
                                       ),
-                                    ),
-                                    child: const Icon(
-                                      Icons.share,
-                                      color: Color.fromRGBO(81, 100, 255, 1),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      shape: BoxShape.rectangle,
-                                      border: Border.all(
-                                        color:
-                                            Color.fromARGB(255, 151, 185, 229),
-                                        width: 1,
+                                      const SizedBox(
+                                        width: 10,
                                       ),
-                                    ),
-                                    child: const Icon(
-                                      Icons.bookmark_border,
-                                      color: Color.fromRGBO(81, 100, 255, 1),
-                                    ),
+                                      Container(
+                                        width: 40,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          shape: BoxShape.rectangle,
+                                          border: Border.all(
+                                            color: Color.fromARGB(
+                                                255, 151, 185, 229),
+                                            width: 1,
+                                          ),
+                                        ),
+                                        child: const Icon(
+                                          Icons.bookmark_border,
+                                          color:
+                                              Color.fromRGBO(81, 100, 255, 1),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   Container(
                                     decoration: const BoxDecoration(
@@ -467,20 +488,21 @@ class EventDetails extends StatelessWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           GestureDetector(
-                                            // onTap: () {
-                                            //   Navigator.push(
-                                            //       context,
-                                            //       MaterialPageRoute(
-                                            //           builder: (context) =>
-                                            //               TicketScreen()));
-                                            // },
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          BuyTicketPage(event
+                                                              .elementAt(id))));
+                                            },
                                             child: Container(
                                               padding:
                                                   const EdgeInsets.symmetric(
                                                       horizontal: 10,
                                                       vertical: 13),
                                               child: const Text(
-                                                "                   Bilet Satın Al                   ",
+                                                "Bilet Satın Al",
                                                 style: TextStyle(
                                                     fontFamily:
                                                         'Source Sans Pro',
@@ -507,52 +529,58 @@ class EventDetails extends StatelessWidget {
                                       height: 20,
                                     ),
                                     Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        CircleAvatar(
-                                          radius: 30,
-                                          backgroundImage: NetworkImage(
-                                              "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png"),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            child: Column(
-                                              children: [
-                                                Text(
-                                                  "Organizatör",
-                                                  style: const TextStyle(
-                                                    color: Color.fromRGBO(
-                                                        0, 0, 0, 1),
-                                                    fontFamily:
-                                                        'Source Sans Pro',
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
-                                                    //height: 1.5 /*PERCENT not supported*/),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 12,
-                                                ),
-                                                Text(
-                                                  "Organizatör",
-                                                  style: const TextStyle(
-                                                    color: Color.fromRGBO(
-                                                        0, 0, 0, 1),
-                                                    fontFamily:
-                                                        'Source Sans Pro',
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    //height: 1.5 /*PERCENT not supported*/),
-                                                  ),
-                                                ),
-                                              ],
+                                        Row(
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 30,
+                                              backgroundImage: NetworkImage(
+                                                  "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png"),
                                             ),
-                                          ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "Organizatör",
+                                                    style: const TextStyle(
+                                                      color: Color.fromRGBO(
+                                                          0, 0, 0, 1),
+                                                      fontFamily:
+                                                          'Source Sans Pro',
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      //height: 1.5 /*PERCENT not supported*/),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 12,
+                                                  ),
+                                                  Text(
+                                                    "Organizatör",
+                                                    style: const TextStyle(
+                                                      color: Color.fromRGBO(
+                                                          0, 0, 0, 1),
+                                                      fontFamily:
+                                                          'Source Sans Pro',
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      //height: 1.5 /*PERCENT not supported*/),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.fromLTRB(
-                                              120, 8, 8, 8),
+                                              8, 8, 8, 8),
                                           child: Container(
                                             decoration: BoxDecoration(
                                               borderRadius:

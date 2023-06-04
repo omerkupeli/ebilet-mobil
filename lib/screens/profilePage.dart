@@ -6,6 +6,7 @@ import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 import 'package:mobil_bilet1/screens/createEvent.dart';
 import 'package:mobil_bilet1/screens/editProfile.dart';
 import 'package:mobil_bilet1/screens/home.dart';
+import 'package:mobil_bilet1/screens/ticket/qrReader.dart';
 import 'package:mobil_bilet1/service/userService.dart';
 import '../models/userModel.dart';
 import 'package:http/http.dart' as http;
@@ -72,6 +73,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                             Row(
                               children: [
+                                buildNavIcon(Icons.qr_code_scanner_sharp, true,
+                                    context, QRScannerScreen()),
+                                SizedBox(
+                                  width: 5,
+                                ),
                                 buildNavIcon(Icons.add_circle_rounded, true,
                                     context, CreateEvent()),
                                 SizedBox(

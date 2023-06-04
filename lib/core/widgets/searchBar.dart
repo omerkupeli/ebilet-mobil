@@ -7,7 +7,7 @@ Widget buildSearchBar(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
       Container(
-        width: 300,
+        width: 250,
         decoration: BoxDecoration(
           color: const Color.fromRGBO(244, 246, 249, 1.0),
           borderRadius: BorderRadius.circular(32),

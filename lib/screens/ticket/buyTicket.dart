@@ -3,8 +3,12 @@ import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 import 'package:mobil_bilet1/screens/ticket/payment.dart';
 
 import '../../core/widgets/smallButton.dart';
+import '../../models/eventModel.dart';
 
 class BuyTicketPage extends StatefulWidget {
+  final Events event;
+
+  BuyTicketPage(this.event);
   @override
   _BuyticketPageState createState() => _BuyticketPageState();
 }
@@ -27,7 +31,11 @@ class _BuyticketPageState extends State<BuyTicketPage> {
   void _onButtonPressed() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => PaymentPage()),
+      MaterialPageRoute(
+          builder: (context) => PaymentPage(
+                widget.event,
+                120,
+              )),
     );
   }
 
@@ -40,7 +48,7 @@ class _BuyticketPageState extends State<BuyTicketPage> {
           child: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +58,8 @@ class _BuyticketPageState extends State<BuyTicketPage> {
                     children: [
                       Row(
                         children: [
-                          smallButton(const Icon(Icons.arrow_back), context),
+                          smallButton(const Icon(Icons.arrow_back), context,
+                              goBack: true),
                           const SizedBox(
                             width: 6,
                           ),
@@ -204,8 +213,44 @@ class _BuyticketPageState extends State<BuyTicketPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 200,
+                    height: 30,
                   ),
+                  //event name and date
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Etkinlik Bilgileri",
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        widget.event.name.toString(),
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        widget.event.startDate.toString().substring(0, 16) +
+                            " // " +
+                            widget.event.endDate.toString().substring(0, 16),
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 100,
+                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
