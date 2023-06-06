@@ -293,7 +293,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ],
               ),
             ),
-            buildBottomNavBar(context),
+            buildBottomNavBar(context, ProfilePage()),
           ],
         ),
       ),

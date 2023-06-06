@@ -119,7 +119,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
               ),
             ),
           ),
-          buildBottomNavBar(context),
+          //buildBottomNavBar(context),
         ],
       )),
     );

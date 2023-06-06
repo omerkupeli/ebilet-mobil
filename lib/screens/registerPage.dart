@@ -39,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void reegisterUser(Auth auth) async {
     final response = await Api.registerUser(auth);
     try {
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         print(response.body);
         print('Kayıt başarılı');
         Navigator.pushReplacement(

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:mobil_bilet1/core/widgets/navBarBottom.dart';
 import 'package:mobil_bilet1/screens/home.dart';
 import 'package:mobil_bilet1/screens/ticket/qrticket.dart';
 import 'package:mobil_bilet1/service/eventService.dart';
@@ -71,6 +72,11 @@ class _MyTicketsPageState extends State<MyTicketsPage> {
       }
     }
     return matchedEvents;
+  }
+
+  bool isDatePassed(DateTime date) {
+    final now = DateTime.now();
+    return date.isBefore(DateTime(now.year, now.month, now.day));
   }
 
   @override
@@ -247,6 +253,36 @@ class _MyTicketsPageState extends State<MyTicketsPage> {
                                                         ),
                                                       ],
                                                     ),
+                                                    SizedBox(
+                                                      height: 24,
+                                                    ),
+                                                    //isDatePassed
+                                                    isDatePassed(DateTime.parse(
+                                                            events
+                                                                .elementAt(j)
+                                                                .startDate
+                                                                .toString()
+                                                                .substring(
+                                                                    0, 10)))
+                                                        ? Text(
+                                                            "! Etkinlik Tarihi Geçmiş !",
+                                                            style: TextStyle(
+                                                              color: Colors.red,
+                                                              fontSize: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                            ))
+                                                        : Text(
+                                                            "Etkinlik Başlamadı",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  Colors.black,
+                                                              fontSize: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            )),
                                                   ],
                                                 ),
                                               ),
@@ -302,7 +338,8 @@ class _MyTicketsPageState extends State<MyTicketsPage> {
                   ],
                 ),
               ),
-            )
+            ),
+            buildBottomNavBar(context, MyTicketsPage())
           ],
         )));
   }

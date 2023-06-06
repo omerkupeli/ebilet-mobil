@@ -203,7 +203,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             //Alt Kontrol Bar
-            buildBottomNavBar(context),
+            buildBottomNavBar(context, HomePage()),
           ],
         ),
       ),
