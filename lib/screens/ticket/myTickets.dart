@@ -62,18 +62,6 @@ class _MyTicketsPageState extends State<MyTicketsPage> {
     }
   }
 
-  List<Events> matchedEvents = [];
-  List<Events> matchEvents(List<Bookings> bookings, List<Events> events) {
-    for (var i = 0; i < bookings.length; i++) {
-      for (var j = 0; j < events.length; j++) {
-        if (bookings[i].eventId == events[j].id) {
-          matchedEvents.add(events[j]);
-        }
-      }
-    }
-    return matchedEvents;
-  }
-
   bool isDatePassed(DateTime date) {
     final now = DateTime.now();
     return date.isBefore(DateTime(now.year, now.month, now.day));
@@ -84,7 +72,6 @@ class _MyTicketsPageState extends State<MyTicketsPage> {
     super.initState();
     getBookings();
     getEvents();
-    matchEvents(bookings, events);
   }
 
   @override
